@@ -7,6 +7,7 @@ const Post = ({ post }) => {
 
   return (
     <div className="card post-card" style={{ width: "25rem" }}>
+     
       <span
         className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"
         onClick={() => deletePost(post.id)}
@@ -17,7 +18,7 @@ const Post = ({ post }) => {
         <h5 className="card-title">{post.title} </h5>
 
         <p>
-          {post.tags.map((tag) => (
+          {post.tags.map((tag,index) => (
             <span key={tag} className="badge text-bg-dark post-tag">
               {tag}
             </span>
@@ -28,8 +29,8 @@ const Post = ({ post }) => {
         <p>
           <button type="button" className="post-like">
             Like{" "}
-            <span key={post.reactions} className="badge text-bg-primary">
-              {post.reactions}
+            <span className="badge text-bg-primary">
+              {post.reactions.likes}
             </span>
           </button>
         </p>
