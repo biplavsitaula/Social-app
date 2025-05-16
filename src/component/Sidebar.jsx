@@ -1,4 +1,6 @@
-const Sidebar = ({ selectedTab, setSelectedTab }) => {
+import { Link } from "react-router-dom";
+
+const Sidebar = () => {
   return (
     <>
       <div
@@ -12,45 +14,25 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
           <svg className="bi pe-none me-2" width="40" height="32">
             <use xlinkHref="#bootstrap"></use>
           </svg>
-          <span className="fs-4">Sidebar</span>
+          <span className="fs-4">Social</span>
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li
-            className="nav-item"
-            onClick={() => {
-              setSelectedTab("Home");
-            }}
-          >
-            <a
-              href="#"
-              className={`nav-link text-white ${
-                selectedTab === "Home" && "active"
-              }`}
-              aria-current="page"
-            >
+          <li className="nav-item">
+            <Link to="/" className="nav-link text-white" aria-current="page">
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
               Home
-            </a>
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              setSelectedTab("CreatePost");
-            }}
-          >
-            <a
-              href="#"
-              className={`nav-link text-white ${
-                selectedTab === "CreatePost" && "active"
-              }`}
-            >
+          <li>
+            <Link to="/create-post" className="nav-link text-white">
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#speedometer2"></use>
               </svg>
               Create Post
-            </a>
+            </Link>
           </li>
 
           <img

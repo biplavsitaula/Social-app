@@ -4,12 +4,14 @@ import { PostListData } from "../store/post-list-store";
 
 const Header = () => {
   const { addAllPost } = useContext(PostListData);
+
   const handleSearch = () => {
     let searchQuery = search.value;
     fetch(`https://dummyjson.com/posts/search?q=${searchQuery}`)
       .then((res) => res.json())
       .then((data) => addAllPost(data.posts));
   };
+
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -60,6 +62,7 @@ const Header = () => {
           <form
             className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
             role="search"
+            onSubmit={handleSearch}
           >
             <input
               type="search"
@@ -67,18 +70,8 @@ const Header = () => {
               className="form-control form-control-dark text-bg-dark"
               placeholder="Search..."
               aria-label="Search"
-              onKeyUp={handleSearch}
             />
           </form>
-
-          <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">
-              Login
-            </button>
-            <button type="button" className="btn btn-warning">
-              Sign-up
-            </button>
-          </div>
         </div>
       </div>
     </header>

@@ -11,7 +11,7 @@ const Footer = () => {
           </svg>
         </a>
         <span className="mb-3 mb-md-0 text-body-secondary">
-          © 2023 Company, Inc
+          © 2023 Company, Sitaula Inc
         </span>
       </div>
     </footer>

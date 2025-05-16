@@ -3,7 +3,6 @@ import { createContext } from "react";
 
 export const PostListData = createContext({
   postList: [],
-  addAllPost: () => {},
   addPost: () => {},
   deletePost: () => {},
 });
@@ -25,17 +24,10 @@ const postListReducer = (crrPostList, action) => {
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
-  const addPost = (userId, title, body, reactions, tags) => {
+  const addPost = (post) => {
     dispatchPostList({
       type: "ADD_POST",
-      payload: {
-        id: Date.now(),
-        title: title,
-        body: body,
-        reactions: reactions,
-        userId: userId,
-        tags: tags,
-      },
+      payload: post,
     });
   };
 
@@ -58,9 +50,7 @@ const PostListProvider = ({ children }) => {
   };
 
   return (
-    <PostListData.Provider
-      value={{ postList, addAllPost, addPost, deletePost }}
-    >
+    <PostListData.Provider value={{ postList, addPost, deletePost }}>
       {children}
     </PostListData.Provider>
   );
